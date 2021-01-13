@@ -1,5 +1,5 @@
 #' Reads Excel Files obtained from EM-DAT Database
-#' @description EMDAT Database link [here](https://public.emdat.be/)
+#' @description Reads Excel files downloaded from the EMDAT Database linked [here](https://public.emdat.be/)
 #' @param path_to_file A String, the Path to the file downloaded.
 #' @param file_data A Boolean, Do you want information about the file and how it was created?
 #'
@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' read_emdat(path_to_file = here("Tanzania_Kenya2.xlsx"), file_data = TRUE)
+#' read_emdat(path_to_file = "/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
 #' @importFrom magrittr %>%
 read_emdat <- function(path_to_file, file_data = TRUE){
   disaster_data <- readxl::read_excel(path = path_to_file,

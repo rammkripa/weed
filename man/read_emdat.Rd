@@ -15,8 +15,8 @@ read_emdat(path_to_file, file_data = TRUE)
 Returns a list containing one or two tibbles, one for the Disaster Data, and one for File Metadata.
 }
 \description{
-EMDAT Database link \href{https://public.emdat.be/}{here}
+Reads Excel files downloaded from the EMDAT Database linked \href{https://public.emdat.be/}{here}
 }
 \examples{
-read_emdat(path_to_file = "Tanzania_Kenya2.xlsx", file_data = TRUE)
+read_emdat(path_to_file = "/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
 }
