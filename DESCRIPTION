@@ -16,3 +16,5 @@ Imports:
     readxl,
     dplyr,
     magrittr
+URL: https://github.com/rammkripa/weed
+BugReports: https://github.com/rammkripa/weed/issues
