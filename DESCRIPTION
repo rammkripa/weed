@@ -1,20 +1,18 @@
 Package: weed
-Title: What the Package Does (One Line, Title Case)
+Title: Wrapper for Emergency Events Database
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Ram",
+           family = "Kripa",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "ram.m.kripa@berkeley.edu")
 Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    readxl
-Depends: 
-    tidyverse
+    readxl,
+    dplyr,
+    magrittr
