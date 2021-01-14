@@ -39,10 +39,16 @@ devtools::install_github("rammkripa/weed")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r example, include=FALSE}
 library(weed)
 library(tidyverse)
+```
+# Loading the Data
+```{r ex2}
 em <- read_emdat("/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
+```
+# Locationizing the Data
+```{r ex3}
 em$disaster_data %>%
   tail() %>%
   split_locations(column_name = "Location") %>%
