@@ -46,15 +46,35 @@ em <- read_emdat("/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
 em$disaster_data %>%
   tail() %>%
   split_locations(column_name = "Location") %>%
-  select(`Dis No`, Location,location_word) %>%
+  select(`Dis No`, Location,location_word, Country) %>%
   head()
-#> # A tibble: 6 x 3
-#>   `Dis No`     Location                                           location_word 
-#>   <chr>        <chr>                                              <chr>         
-#> 1 2019-0515-T… Handeni district (Tanga Region)                    handeni       
-#> 2 2019-0515-T… Handeni district (Tanga Region)                    tanga         
-#> 3 2019-0562-T… Mwanza district                                    mwanza        
-#> 4 2020-0164-K… West Pokot, Elgeyo Marakwet, Kisumu, Homabay, Tan… west pokot    
-#> 5 2020-0164-K… West Pokot, Elgeyo Marakwet, Kisumu, Homabay, Tan… elgeyo marakw…
-#> 6 2020-0164-K… West Pokot, Elgeyo Marakwet, Kisumu, Homabay, Tan… kisumu
+#> # A tibble: 6 x 4
+#>   `Dis No`   Location                             location_word  Country        
+#>   <chr>      <chr>                                <chr>          <chr>          
+#> 1 2019-0515… Handeni district (Tanga Region)      handeni        Tanzania, Unit…
+#> 2 2019-0515… Handeni district (Tanga Region)      tanga          Tanzania, Unit…
+#> 3 2019-0562… Mwanza district                      mwanza         Tanzania, Unit…
+#> 4 2020-0164… West Pokot, Elgeyo Marakwet, Kisumu… west pokot     Kenya          
+#> 5 2020-0164… West Pokot, Elgeyo Marakwet, Kisumu… elgeyo marakw… Kenya          
+#> 6 2020-0164… West Pokot, Elgeyo Marakwet, Kisumu… kisumu         Kenya
+```
+
+# Geocoding the Locationized Data
+
+``` r
+em$disaster_data %>%
+  tail() %>%
+  split_locations(column_name = "Location") %>%
+  select(`Dis No`, Location,location_word, Country) %>%
+  head() %>%
+  geocode(geonames_username = "rammkripa")
+#> # A tibble: 6 x 6
+#>   `Dis No`   Location                    location_word Country         lat   lng
+#>   <chr>      <chr>                       <chr>         <chr>         <dbl> <dbl>
+#> 1 2019-0515… Handeni district (Tanga Re… handeni       Tanzania, U… -5.55   38.3
+#> 2 2019-0515… Handeni district (Tanga Re… tanga         Tanzania, U… -5.07   39.1
+#> 3 2019-0562… Mwanza district             mwanza        Tanzania, U… -2.52   32.9
+#> 4 2020-0164… West Pokot, Elgeyo Marakwe… west pokot    Kenya         1.75   35.2
+#> 5 2020-0164… West Pokot, Elgeyo Marakwe… elgeyo marak… Kenya         0.516  35.5
+#> 6 2020-0164… West Pokot, Elgeyo Marakwe… kisumu        Kenya        -0.102  34.8
 ```

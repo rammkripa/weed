@@ -42,10 +42,6 @@ geocode <- function(.,
       tidyr::unnest_wider(col = lat, names_sep = '') %>%
       tidyr::unnest_wider(col = lng, names_sep = '')
   }
-  if (n_results == 1) {
-    new_df <- new_df %>%
-      dplyr::rename("lat" = "lat1", "lng" = "lng1")
-  }
   return(new_df)
 }
 cache_list <- list()
