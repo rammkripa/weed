@@ -44,7 +44,9 @@ library(weed)
 library(tidyverse)
 em <- read_emdat("/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
 em$disaster_data %>%
-  head() %>%
-  knitr::kable()
+  tail() %>%
+  split_locations(column_name = "Location") %>%
+  select(`Dis No`, Location,location_word) %>%
+  head()
 ```
 

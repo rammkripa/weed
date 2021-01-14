@@ -21,7 +21,7 @@ split_locations <- function(.,
                             dummy_words = c("cities","states","provinces","districts","municipalities","regions", "villages",
                               "city","state","province","district","municipality","region", "township", "village",
                               "near", "department"),
-                            joiner_regex = ",|\\(|\\)|;|\\+|(and)|(of)"
+                            joiner_regex = ",|\\(|\\)|;|\\+|( and )|( of )"
 ) {
   location_word <- NULL
   df <- .
