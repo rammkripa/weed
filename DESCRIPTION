@@ -18,6 +18,10 @@ Imports:
     magrittr,
     tidytext,
     stringr,
-    tibble
+    tibble,
+    geonames,
+    countrycode,
+    purrr,
+    tidyr
 URL: https://github.com/rammkripa/weed
 BugReports: https://github.com/rammkripa/weed/issues
