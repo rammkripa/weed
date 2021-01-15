@@ -56,7 +56,7 @@ locationized_data <- em$disaster_data %>%
   split_locations(column_name = "Location") %>%
   head()
 locationized_data %>%
-  select(`Dis No`, Location,location_word, Country)
+  select(`Dis No`, Location,location_word, Latitude, Longitude)
 ```
 
 # However, our locations have very little Lat/Long data
@@ -72,7 +72,8 @@ locationized_data %>%
 ```{r ex5}
 geocoded_data <- locationized_data %>%
   geocode(geonames_username = "rammkripa")
-geocoded_data
+geocoded_data %>%
+  select(`Dis No`, Location,location_word, lat, lng)
 ```
 
 # How effective was our geocoding?
