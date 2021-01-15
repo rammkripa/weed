@@ -46,9 +46,9 @@ em <- read_emdat("/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
 locationized_data <- em$disaster_data %>%
   tail() %>%
   split_locations(column_name = "Location") %>%
-  select(`Dis No`, Location,location_word, Country) %>%
   head()
-locationized_data
+locationized_data %>%
+  select(`Dis No`, Location,location_word, Country)
 #> # A tibble: 6 x 4
 #>   `Dis No`   Location                             location_word  Country        
 #>   <chr>      <chr>                                <chr>          <chr>          
@@ -60,21 +60,44 @@ locationized_data
 #> 6 2020-0164… West Pokot, Elgeyo Marakwet, Kisumu… kisumu         Kenya
 ```
 
+# However, our locations have very little Lat/Long data
+
+``` r
+locationized_data %>%
+  percent_located_locations(lat_column = "Latitude",
+                            lng_column = "Longitude")
+```
+
+<img src="man/figures/README-ex4-1.png" width="100%" />
+
 # Geocoding the Locationized Data
 
 ``` r
 geocoded_data <- locationized_data %>%
   geocode(geonames_username = "rammkripa")
 geocoded_data
-#> # A tibble: 6 x 6
-#>   `Dis No`   Location                    location_word Country         lat   lng
-#>   <chr>      <chr>                       <chr>         <chr>         <dbl> <dbl>
-#> 1 2019-0515… Handeni district (Tanga Re… handeni       Tanzania, U… -5.55   38.3
-#> 2 2019-0515… Handeni district (Tanga Re… tanga         Tanzania, U… -5.07   39.1
-#> 3 2019-0562… Mwanza district             mwanza        Tanzania, U… -2.52   32.9
-#> 4 2020-0164… West Pokot, Elgeyo Marakwe… west pokot    Kenya         1.75   35.2
-#> 5 2020-0164… West Pokot, Elgeyo Marakwe… elgeyo marak… Kenya         0.516  35.5
-#> 6 2020-0164… West Pokot, Elgeyo Marakwe… kisumu        Kenya        -0.102  34.8
+#> # A tibble: 6 x 46
+#>   `Dis No` Year  Seq   `Disaster Group` `Disaster Subgr… `Disaster Type`
+#>   <chr>    <chr> <chr> <chr>            <chr>            <chr>          
+#> 1 2019-05… 2019  0515  Natural          Hydrological     Flood          
+#> 2 2019-05… 2019  0515  Natural          Hydrological     Flood          
+#> 3 2019-05… 2019  0562  Natural          Hydrological     Flood          
+#> 4 2020-01… 2020  0164  Natural          Hydrological     Flood          
+#> 5 2020-01… 2020  0164  Natural          Hydrological     Flood          
+#> 6 2020-01… 2020  0164  Natural          Hydrological     Flood          
+#> # … with 40 more variables: `Disaster Subtype` <chr>, `Disaster
+#> #   Subsubtype` <chr>, `Event Name` <chr>, `Entry Criteria` <chr>,
+#> #   Country <chr>, ISO <chr>, Region <chr>, Continent <chr>, Location <chr>,
+#> #   Origin <chr>, `Associated Dis` <chr>, `Associated Dis2` <chr>, `OFDA
+#> #   Response` <chr>, Appeal <chr>, Declaration <chr>, `Aid Contribution` <dbl>,
+#> #   `Dis Mag Value` <dbl>, `Dis Mag Scale` <chr>, Latitude <chr>,
+#> #   Longitude <chr>, `Local Time` <chr>, `River Basin` <chr>, `Start
+#> #   Year` <dbl>, `Start Month` <dbl>, `Start Day` <dbl>, `End Year` <dbl>, `End
+#> #   Month` <dbl>, `End Day` <dbl>, `Total Deaths` <dbl>, `No Injured` <dbl>,
+#> #   `No Affected` <dbl>, `No Homeless` <dbl>, `Total Affected` <dbl>,
+#> #   `Reconstruction Costs ('000 US$)` <dbl>, `Insured Damages ('000
+#> #   US$)` <dbl>, `Total Damages ('000 US$)` <dbl>, CPI <dbl>,
+#> #   location_word <chr>, lat <dbl>, lng <dbl>
 ```
 
 # How effective was our geocoding?
@@ -84,4 +107,4 @@ geocoded_data %>%
   percent_located_locations()
 ```
 
-<img src="man/figures/README-ex5-1.png" width="100%" />
+<img src="man/figures/README-ex6-1.png" width="100%" />

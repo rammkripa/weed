@@ -54,13 +54,22 @@ em <- read_emdat("/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
 locationized_data <- em$disaster_data %>%
   tail() %>%
   split_locations(column_name = "Location") %>%
-  select(`Dis No`, Location,location_word, Country) %>%
   head()
-locationized_data
+locationized_data %>%
+  select(`Dis No`, Location,location_word, Country)
 ```
 
-# Geocoding the Locationized Data
+# However, our locations have very little Lat/Long data
+
 ```{r ex4}
+locationized_data %>%
+  percent_located_locations(lat_column = "Latitude",
+                            lng_column = "Longitude")
+```
+
+
+# Geocoding the Locationized Data
+```{r ex5}
 geocoded_data <- locationized_data %>%
   geocode(geonames_username = "rammkripa")
 geocoded_data
@@ -68,7 +77,7 @@ geocoded_data
 
 # How effective was our geocoding?
 
-```{r ex5}
+```{r ex6}
 geocoded_data %>%
   percent_located_locations()
 ```
