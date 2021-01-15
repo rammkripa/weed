@@ -2,6 +2,7 @@
 
 export(geocode)
 export(nest_locations)
+export(percent_located_disasters)
 export(percent_located_locations)
 export(read_emdat)
 export(split_locations)
