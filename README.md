@@ -108,3 +108,32 @@ geocoded_data %>%
 ```
 
 <img src="man/figures/README-ex6-1.png" width="100%" />
+
+# Want to re-nest the location data?
+
+``` r
+geocoded_data %>%
+  nest_locations()
+#> # A tibble: 6 x 44
+#>   `Dis No` Year  Seq   `Disaster Group` `Disaster Subgr… `Disaster Type`
+#>   <chr>    <chr> <chr> <chr>            <chr>            <chr>          
+#> 1 2019-05… 2019  0515  Natural          Hydrological     Flood          
+#> 2 2019-05… 2019  0515  Natural          Hydrological     Flood          
+#> 3 2019-05… 2019  0562  Natural          Hydrological     Flood          
+#> 4 2020-01… 2020  0164  Natural          Hydrological     Flood          
+#> 5 2020-01… 2020  0164  Natural          Hydrological     Flood          
+#> 6 2020-01… 2020  0164  Natural          Hydrological     Flood          
+#> # … with 38 more variables: `Disaster Subtype` <chr>, `Disaster
+#> #   Subsubtype` <chr>, `Event Name` <chr>, `Entry Criteria` <chr>,
+#> #   Country <chr>, ISO <chr>, Region <chr>, Continent <chr>, Location <chr>,
+#> #   Origin <chr>, `Associated Dis` <chr>, `Associated Dis2` <chr>, `OFDA
+#> #   Response` <chr>, Appeal <chr>, Declaration <chr>, `Aid Contribution` <dbl>,
+#> #   `Dis Mag Value` <dbl>, `Dis Mag Scale` <chr>, Latitude <chr>,
+#> #   Longitude <chr>, `Local Time` <chr>, `River Basin` <chr>, `Start
+#> #   Year` <dbl>, `Start Month` <dbl>, `Start Day` <dbl>, `End Year` <dbl>, `End
+#> #   Month` <dbl>, `End Day` <dbl>, `Total Deaths` <dbl>, `No Injured` <dbl>,
+#> #   `No Affected` <dbl>, `No Homeless` <dbl>, `Total Affected` <dbl>,
+#> #   `Reconstruction Costs ('000 US$)` <dbl>, `Insured Damages ('000
+#> #   US$)` <dbl>, `Total Damages ('000 US$)` <dbl>, CPI <dbl>,
+#> #   data <list<tbl_df[,4]>>
+```

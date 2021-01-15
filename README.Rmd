@@ -81,3 +81,10 @@ geocoded_data
 geocoded_data %>%
   percent_located_locations()
 ```
+
+# Want to re-nest the location data?
+
+```{r ex7} 
+geocoded_data %>%
+  nest_locations()
+```
