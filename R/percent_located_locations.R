@@ -38,6 +38,7 @@ percent_located_locations <- function(.,
     perc_df %>%
       ggplot2::ggplot(mapping = ggplot2::aes(x = coords_nonexistent, y = percent, fill = coords_nonexistent))+
       ggplot2::geom_col() +
+      ggplot2::ylim(0,100) +
       ggplot2::xlab("Geocoding") +
       ggplot2::ylab("Percent of Locations") +
       ggplot2::ggtitle("Percent of Locations Geocoded") +
