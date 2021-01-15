@@ -32,7 +32,8 @@ nest_locations <- function(.,
     dplyr::group_nest(get(key_column)) %>%
     dplyr::rename_with(.fn = naming_func, .cols = "get(key_column)")
   joint <- df %>%
-    dplyr::left_join(y = bud, by = key_column)
+    dplyr::left_join(y = bud, by = key_column) %>%
+    dplyr::rename("location_data" = "data")
   if (keep_nested_cols) {
     return(joint)
   }

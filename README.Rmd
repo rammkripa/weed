@@ -86,5 +86,6 @@ geocoded_data %>%
 
 ```{r ex7} 
 geocoded_data %>%
-  nest_locations()
+  nest_locations() %>%
+  select(`Dis No`, location_data)
 ```
