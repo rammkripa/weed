@@ -60,7 +60,14 @@ locationized_data %>%
 #> 6 2020-0164… West Pokot, Elgeyo Marakwet, Kisu… kisumu        116.343  365.935
 ```
 
-# However, our locations have very little Lat/Long data
+There are two problems with the Dataset as it exists here. 1. Half of
+our observations, even in this toy dataset, don’t have Lat/Long data 2.
+The Lat/Long here is blatantly wrong. Lat \> 90? Long \> 360? How is
+this possible?
+
+So, we must recode this Lat/Long data
+
+# Solving Problem 1: Our locations have very little Lat/Long data
 
 ``` r
 locationized_data %>%
@@ -70,7 +77,7 @@ locationized_data %>%
 
 <img src="man/figures/README-ex4-1.png" width="100%" />
 
-# Geocoding the Locationized Data
+# Solving Problem 2: Geocoding the Locationized Data
 
 ``` r
 geocoded_data <- locationized_data %>%
@@ -87,6 +94,9 @@ geocoded_data %>%
 #> 5 2020-0164-… West Pokot, Elgeyo Marakwet, Kisumu, H… elgeyo marak…  0.516  35.5
 #> 6 2020-0164-… West Pokot, Elgeyo Marakwet, Kisumu, H… kisumu        -0.102  34.8
 ```
+
+Side note: These Lat/Long data look much better than before, given that
+Kenya is close to the equator\!
 
 # How effective was our geocoding?
 

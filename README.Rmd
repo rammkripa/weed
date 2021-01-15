@@ -59,7 +59,16 @@ locationized_data %>%
   select(`Dis No`, Location,location_word, Latitude, Longitude)
 ```
 
-# However, our locations have very little Lat/Long data
+There are two problems with the Dataset as it exists here.
+1. Half of our observations, even in this toy dataset, don't have Lat/Long data
+2. The Lat/Long here is blatantly wrong.
+Lat > 90?
+Long > 360? 
+How is this possible?
+
+So, we must recode this Lat/Long data
+
+# Solving Problem 1: Our locations have very little Lat/Long data
 
 ```{r ex4}
 locationized_data %>%
@@ -68,13 +77,16 @@ locationized_data %>%
 ```
 
 
-# Geocoding the Locationized Data
+# Solving Problem 2: Geocoding the Locationized Data
+
 ```{r ex5}
 geocoded_data <- locationized_data %>%
   geocode(geonames_username = "rammkripa")
 geocoded_data %>%
   select(`Dis No`, Location,location_word, lat, lng)
 ```
+
+Side note: These Lat/Long data look much better than before, given that Kenya is close to the equator!
 
 # How effective was our geocoding?
 
