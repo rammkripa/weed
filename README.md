@@ -27,9 +27,9 @@ And the development version from [GitHub](https://github.com/) with:
 devtools::install_github("rammkripa/weed")
 ```
 
-## Example
+# Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows a common `weed` workflow:
 
 # Loading the Data
 
@@ -43,11 +43,12 @@ em <- read_emdat("/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
 # Locationizing the Data
 
 ``` r
-em$disaster_data %>%
+locationized_data <- em$disaster_data %>%
   tail() %>%
   split_locations(column_name = "Location") %>%
   select(`Dis No`, Location,location_word, Country) %>%
   head()
+locationized_data
 #> # A tibble: 6 x 4
 #>   `Dis No`   Location                             location_word  Country        
 #>   <chr>      <chr>                                <chr>          <chr>          
@@ -62,12 +63,9 @@ em$disaster_data %>%
 # Geocoding the Locationized Data
 
 ``` r
-em$disaster_data %>%
-  tail() %>%
-  split_locations(column_name = "Location") %>%
-  select(`Dis No`, Location,location_word, Country) %>%
-  head() %>%
+geocoded_data <- locationized_data %>%
   geocode(geonames_username = "rammkripa")
+geocoded_data
 #> # A tibble: 6 x 6
 #>   `Dis No`   Location                    location_word Country         lat   lng
 #>   <chr>      <chr>                       <chr>         <chr>         <dbl> <dbl>
@@ -78,3 +76,12 @@ em$disaster_data %>%
 #> 5 2020-0164… West Pokot, Elgeyo Marakwe… elgeyo marak… Kenya         0.516  35.5
 #> 6 2020-0164… West Pokot, Elgeyo Marakwe… kisumu        Kenya        -0.102  34.8
 ```
+
+# How effective was our geocoding?
+
+``` r
+geocoded_data %>%
+  percent_located_locations()
+```
+
+<img src="man/figures/README-ex5-1.png" width="100%" />
