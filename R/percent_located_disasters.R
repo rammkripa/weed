@@ -56,8 +56,8 @@ percent_located_disasters <- function(.,
       ggplot2::geom_col() +
       ggplot2::ylim(0,100) +
       ggplot2::xlab("Geocoding") +
-      ggplot2::ylab("Percent of Locations") +
-      ggplot2::ggtitle("Percent of Locations Geocoded") +
+      ggplot2::ylab("Percent of Disasters") +
+      ggplot2::ggtitle("Percent of Disasters Geocoded") +
       ggplot2::coord_flip()
   }
   else {
