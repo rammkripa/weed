@@ -107,6 +107,13 @@ geocoded_data %>%
 
 <img src="man/figures/README-ex6-1.png" width="100%" />
 
+``` r
+geocoded_data %>%
+  percent_located_disasters()
+```
+
+<img src="man/figures/README-ex62-1.png" width="100%" />
+
 # Want to re-nest the location data?
 
 ``` r

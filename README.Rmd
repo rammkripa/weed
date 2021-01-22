@@ -95,6 +95,11 @@ geocoded_data %>%
   percent_located_locations()
 ```
 
+```{r ex62}
+geocoded_data %>%
+  percent_located_disasters()
+```
+
 # Want to re-nest the location data?
 
 ```{r ex7} 
