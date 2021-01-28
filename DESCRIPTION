@@ -1,12 +1,12 @@
 Package: weed
-Title: Wrapper for Emergency Events Database
+Title: Wrangler for Emergency Events Database
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Ram",
            family = "Kripa",
            role = c("aut", "cre"),
            email = "ram.m.kripa@berkeley.edu")
-Description: What the package does (one paragraph).
+Description: Makes research involving EMDAT and related datasets easier.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

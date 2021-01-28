@@ -11,16 +11,20 @@ The goal of weed is to make the analysis of EM-DAT and related datasets
 easier, with most of the pre-processing abstracted away by functions in
 this package\!
 
+## Pre Requisites
+
+Installation of the following packages readxl, dplyr, magrittr,
+tidytext, stringr, tibble, geonames, countrycode, purrr, tidyr, forcats,
+ggplot2
+
+You also need a geonames user account if you intend to use the geocoding
+functionality of this package. Info on how to get one for free is
+available [here](https://www.geonames.org/manual.html).
+
 ## Installation
 
-You can install the released version of weed from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("weed")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from
+[GitHub](https://github.com/rammkripa/weed) with:
 
 ``` r
 # install.packages("devtools")
