@@ -13,9 +13,9 @@ this package\!
 
 ## Pre Requisites
 
-Installation of the following packages readxl, dplyr, magrittr,
+Installation of the following packages : readxl, dplyr, magrittr,
 tidytext, stringr, tibble, geonames, countrycode, purrr, tidyr, forcats,
-ggplot2
+ggplot2.
 
 You also need a geonames user account if you intend to use the geocoding
 functionality of this package. Info on how to get one for free is
@@ -64,10 +64,14 @@ locationized_data %>%
 #> 6 2020-0164… West Pokot, Elgeyo Marakwet, Kisu… kisumu        116.343  365.935
 ```
 
-There are two problems with the Dataset as it exists here. 1. Half of
-our observations, even in this toy dataset, don’t have Lat/Long data 2.
-The Lat/Long here is blatantly wrong. Lat \> 90? Long \> 360? How is
-this possible?
+There are two problems with the Dataset as it exists here.
+
+1.  Half of our observations, even in this toy dataset, don’t have
+    Lat/Long data
+
+2.  The Lat/Long here is blatantly wrong.
+
+Lat \> 90? Long \> 360? How is this possible?
 
 So, we must recode this Lat/Long data
 
@@ -83,9 +87,14 @@ locationized_data %>%
 
 # Solving Problem 2: Geocoding the Locationized Data
 
+A reminder that you need a geonames username to access this feature of
+the `weed` package.
+
+More info available [here](https://www.geonames.org/manual.html).
+
 ``` r
 geocoded_data <- locationized_data %>%
-  geocode(geonames_username = "rammkripa")
+  geocode(geonames_username = dummy_name)
 geocoded_data %>%
   select(`Dis No`, Location,location_word, lat, lng)
 #> # A tibble: 6 x 5

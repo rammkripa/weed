@@ -58,7 +58,8 @@ percent_located_disasters <- function(.,
       ggplot2::xlab("Geocoding") +
       ggplot2::ylab("Percent of Disasters") +
       ggplot2::ggtitle("Percent of Disasters Geocoded") +
-      ggplot2::coord_flip()
+      ggplot2::coord_flip() +
+      ggplot2::theme(legend.title = ggplot2::element_blank())
   }
   else {
     return(perc_df)

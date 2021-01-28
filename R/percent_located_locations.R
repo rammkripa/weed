@@ -34,6 +34,7 @@ percent_located_locations <- function(.,
     dplyr::mutate(percent = 100*count/sum(count)) %>%
     dplyr::mutate(coords_nonexistent = forcats::as_factor(coords_nonexistent)) %>%
     dplyr::mutate(coords_nonexistent = forcats::fct_recode(coords_nonexistent, "Geocode Failed" = "TRUE", "Geocode Success"  = "FALSE"))
+
   if (plot_result){
     perc_df %>%
       ggplot2::ggplot(mapping = ggplot2::aes(x = coords_nonexistent, y = percent, fill = coords_nonexistent))+
@@ -42,7 +43,8 @@ percent_located_locations <- function(.,
       ggplot2::xlab("Geocoding") +
       ggplot2::ylab("Percent of Locations") +
       ggplot2::ggtitle("Percent of Locations Geocoded") +
-      ggplot2::coord_flip()
+      ggplot2::coord_flip()+
+      ggplot2::theme(legend.title = ggplot2::element_blank())
   }
   else {
     return(perc_df)
