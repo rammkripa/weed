@@ -1,12 +1,12 @@
 Package: weed
 Title: Wrangler for Emergency Events Database
-Version: 0.0.0.9000
+Version: 1.0.2
 Authors@R: 
     person(given = "Ram",
            family = "Kripa",
            role = c("aut", "cre"),
            email = "ram.m.kripa@berkeley.edu")
-Description: Makes research involving EMDAT and related datasets easier.
+Description: Weed makes research involving EMDAT and related datasets easier. These Datasets are manually filled and have several formatting and compatibility issues. Weed aims to resolve these with its functions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
