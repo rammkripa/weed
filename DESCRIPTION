@@ -25,6 +25,8 @@ Imports:
     purrr,
     tidyr,
     forcats,
-    ggplot2
+    ggplot2,
+    rgeos,
+    sf
 URL: https://github.com/rammkripa/weed
 BugReports: https://github.com/rammkripa/weed/issues

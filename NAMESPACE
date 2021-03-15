@@ -2,6 +2,7 @@
 
 export(geocode)
 export(located_in_box)
+export(located_in_shapefile)
 export(nest_locations)
 export(percent_located_disasters)
 export(percent_located_locations)

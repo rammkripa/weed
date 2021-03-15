@@ -15,7 +15,7 @@ this package\!
 
 Installation of the following packages : readxl, dplyr, magrittr,
 tidytext, stringr, tibble, geonames, countrycode, purrr, tidyr, forcats,
-ggplot2.
+ggplot2, sf, rgeos.
 
 You also need a geonames user account if you intend to use the geocoding
 functionality of this package. Info on how to get one for free is
@@ -130,11 +130,12 @@ geocoded_data %>%
 # Check if the locations are in a Lat Long Box\!\!
 
 ``` r
-geocoded_data %>%
+geocoded_data <- geocoded_data %>%
   located_in_box(top_left_lat = 0, 
                  top_left_lng = 35, 
                  bottom_right_lat = -6, 
-                 bottom_right_lng = 40) %>%
+                 bottom_right_lng = 40) 
+geocoded_data %>%
   select(`Dis No`, Location,location_word, lat, lng, in_box)
 #> # A tibble: 6 x 6
 #>   `Dis No`   Location                          location_word    lat   lng in_box
@@ -145,6 +146,34 @@ geocoded_data %>%
 #> 4 2020-0164… West Pokot, Elgeyo Marakwet, Kis… west pokot     1.75   35.2 FALSE 
 #> 5 2020-0164… West Pokot, Elgeyo Marakwet, Kis… elgeyo marak…  0.516  35.5 FALSE 
 #> 6 2020-0164… West Pokot, Elgeyo Marakwet, Kis… kisumu        -0.102  34.8 FALSE
+```
+
+# Check if Locations are in Shapefile\!
+
+``` r
+geocoded_data %>%
+  located_in_shapefile(shapefile_name = s_file_name) %>%
+  select(`Dis No`, Location, location_word, lat, lng, in_box, in_shape)
+#> Reading layer `SH_mask' from data source `/Users/ramkripa/Desktop/Projects/emdat_proj/shape_data/SH_mask.shp' using driver `ESRI Shapefile'
+#> Simple feature collection with 1 feature and 1 field
+#> geometry type:  MULTIPOLYGON
+#> dimension:      XY
+#> bbox:           xmin: -178.9 ymin: -50 xmax: 179.85 ymax: 50
+#> geographic CRS: WGS 84
+#> Warning: `rename_()` is deprecated as of dplyr 0.7.0.
+#> Please use `rename()` instead.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_warnings()` to see where this warning was generated.
+#> although coordinates are longitude/latitude, st_contains assumes that they are planar
+#> # A tibble: 6 x 7
+#>   `Dis No`   Location                 location_word    lat   lng in_box in_shape
+#>   <chr>      <chr>                    <chr>          <dbl> <dbl> <lgl>  <lgl>   
+#> 1 2019-0515… Handeni district (Tanga… handeni       -5.55   38.3 TRUE   TRUE    
+#> 2 2019-0515… Handeni district (Tanga… tanga         -5.07   39.1 TRUE   TRUE    
+#> 3 2019-0562… Mwanza district          mwanza        -2.52   32.9 FALSE  FALSE   
+#> 4 2020-0164… West Pokot, Elgeyo Mara… west pokot     1.75   35.2 FALSE  TRUE    
+#> 5 2020-0164… West Pokot, Elgeyo Mara… elgeyo marak…  0.516  35.5 FALSE  TRUE    
+#> 6 2020-0164… West Pokot, Elgeyo Mara… kisumu        -0.102  34.8 FALSE  TRUE
 ```
 
 # Want to re-nest the location data?
