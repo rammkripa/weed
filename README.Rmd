@@ -122,9 +122,21 @@ geocoded_data %>%
   percent_located_disasters()
 ```
 
+# Check if the locations are in a Lat Long Box!!
+
+```{r ex77}
+geocoded_data %>%
+  located_in_box(top_left_lat = 0, 
+                 top_left_lng = 35, 
+                 bottom_right_lat = -6, 
+                 bottom_right_lng = 40) %>%
+  glimpse()
+```
+
+
 # Want to re-nest the location data?
 
-```{r ex7} 
+```{r ex8} 
 geocoded_data %>%
   nest_locations() %>%
   select(`Dis No`, location_data)

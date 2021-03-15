@@ -1,6 +1,6 @@
 Package: weed
 Title: Wrangler for Emergency Events Database
-Version: 1.0.2
+Version: 1.0.4
 Authors@R: 
     person(given = "Ram",
            family = "Kripa",
