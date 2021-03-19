@@ -39,6 +39,10 @@ d <- tibble::tribble(
 1, "city of new york",      "new york",                       "USA", 40.71427,  -74.00597,
 2, "kerala, chennai municipality, and san francisco",  "kerala", "India", 10.41667,       76.5,
 2, "kerala, chennai municipality, and san francisco",  "chennai",  "India", 13.08784,   80.27847)
-percent_located_disasters(d, how = "any", lat_column = "lat", lng_column = "lng", plot_result = FALSE)
+percent_located_disasters(d,
+how = "any",
+lat_column = "lat",
+lng_column = "lng",
+plot_result = FALSE)
 
 }

@@ -30,10 +30,15 @@ Data Frame with the shapefile data as well as the previous data
 Creates a new column (in_shape) that tells whether the lat/long is in a certain shapefile.
 }
 \examples{
+\dontrun{
 d <- tibble::tribble(
 ~value,  ~location_word,                    ~Country,     ~lat,       ~lng,
 "city of new york",      "new york",                       "USA", 40.71427,  -74.00597,
 "kerala, chennai municipality, and san francisco",  "kerala", "India", 10.41667,       76.5,
-"kerala, chennai municipality, and san francisco",  "chennai",  "India", 13.08784,   80.27847)
-located_in_shapefile(d, lat_column = "lat", lng_column = "lng", shapefile_name = "~/Desktop/Projects/emdat_proj/shape_data/NH_mask.shp")
+"kerala, chennai municipality, and san francisco",  "chennai",  "India", 13.08784,   80.2847)
+located_in_shapefile(d,
+lat_column = "lat",
+lng_column = "lng",
+shapefile_name = "~/dummy_name")
+}
 }
