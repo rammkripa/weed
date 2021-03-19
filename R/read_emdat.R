@@ -7,7 +7,9 @@
 #' @export
 #'
 #' @examples
-#' read_emdat(path_to_file = "/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
+#' \dontrun{
+#' read_emdat(path_to_file = "~/dummy", file_data = TRUE)
+#' }
 #' @importFrom magrittr %>%
 read_emdat <- function(path_to_file, file_data = TRUE){
   disaster_data <- readxl::read_excel(path = path_to_file,

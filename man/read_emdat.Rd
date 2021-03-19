@@ -18,5 +18,7 @@ Returns a list containing one or two tibbles, one for the Disaster Data, and one
 Reads Excel files downloaded from the EMDAT Database linked \href{https://public.emdat.be/}{here}
 }
 \examples{
-read_emdat(path_to_file = "/Users/ramkripa/Desktop/Tk2.xlsx", file_data = TRUE)
+\dontrun{
+read_emdat(path_to_file = "~/dummy", file_data = TRUE)
+}
 }

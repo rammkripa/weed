@@ -16,6 +16,7 @@
 #' "kerala, chennai municipality, and san francisco",   "chennai",   "India", c(13.08784, 12.98833),     c(80.27847, 80.16578),
 #' "kerala, chennai municipality, and san francisco", "san francisco",    "USA", c(37.77493, 37.33939), c(-122.41942, -121.89496))
 #' nest_locations(d, key_column = "value")
+#'
 #' @importFrom magrittr %>%
 nest_locations <- function(.,
                            key_column = "Dis No",
