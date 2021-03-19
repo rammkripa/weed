@@ -10,11 +10,11 @@
 #'
 #' @examples
 #' d <- tibble::tribble(
-#' ~value,  ~location_word,                    ~Country,                  ~lat,                      ~lng,
-#' "city of new york",      "new york",             "USA",  c(40.71427, 40.6501),   c(-74.00597, -73.94958),
-#' "kerala, chennai municipality, and san francisco",    "kerala",    "India",   c(10.41667, 8.4855),         c(76.5, 76.94924),
-#' "kerala, chennai municipality, and san francisco",   "chennai",   "India", c(13.08784, 12.98833),     c(80.27847, 80.16578),
-#' "kerala, chennai municipality, and san francisco", "san francisco",    "USA", c(37.77493, 37.33939), c(-122.41942, -121.89496))
+#' ~value,  ~location_word,                    ~Country,    ~lat,   ~lng,
+#' "city of new york","new york","USA",  c(40.71427, 40.6501),   c(-74.00597, -73.94958),
+#' "kerala", "kerala", "India",c(10.41667, 8.4855), c(76.5, 76.94924),
+#' "chennai municipality","chennai","India", c(13.08784, 12.98833),c(80.27847, 80.16578),
+#' "san francisco", "san francisco","USA", c(37.77493, 37.33939), c(-122.41942, -121.89496))
 #' nest_locations(d, key_column = "value")
 #'
 #' @importFrom magrittr %>%
