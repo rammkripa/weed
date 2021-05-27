@@ -52,16 +52,16 @@ locationized_data <- em$disaster_data %>%
   split_locations(column_name = "Location") %>%
   head()
 locationized_data %>%
-  select(`Dis No`, Location,location_word, Latitude, Longitude)
-#> # A tibble: 6 x 5
-#>   `Dis No`   Location                           location_word Latitude Longitude
-#>   <chr>      <chr>                              <chr>         <chr>    <chr>    
-#> 1 2019-0515… Handeni district (Tanga Region)    handeni       <NA>     <NA>     
-#> 2 2019-0515… Handeni district (Tanga Region)    tanga         <NA>     <NA>     
-#> 3 2019-0562… Mwanza district                    mwanza        <NA>     <NA>     
-#> 4 2020-0164… West Pokot, Elgeyo Marakwet, Kisu… west pokot    116.343  365.935  
-#> 5 2020-0164… West Pokot, Elgeyo Marakwet, Kisu… elgeyo marak… 116.343  365.935  
-#> 6 2020-0164… West Pokot, Elgeyo Marakwet, Kisu… kisumu        116.343  365.935
+  select(`Dis No`, Location,location_word, Latitude, Longitude, uncertain_location_specificity)
+#> # A tibble: 6 x 6
+#>   `Dis No`  Location          location_word Latitude Longitude uncertain_locati…
+#>   <chr>     <chr>             <chr>         <chr>    <chr>     <lgl>            
+#> 1 2019-051… Handeni district… handeni       <NA>     <NA>      TRUE             
+#> 2 2019-051… Handeni district… tanga         <NA>     <NA>      TRUE             
+#> 3 2019-056… Mwanza district   mwanza        <NA>     <NA>      FALSE            
+#> 4 2020-016… West Pokot, Elge… west pokot    116.343  365.935   FALSE            
+#> 5 2020-016… West Pokot, Elge… elgeyo marak… 116.343  365.935   FALSE            
+#> 6 2020-016… West Pokot, Elge… kisumu        116.343  365.935   FALSE
 ```
 
 There are two problems with the Dataset as it exists here.

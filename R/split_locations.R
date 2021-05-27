@@ -6,7 +6,7 @@
 #' @param dummy_words a vector of words that we don't want in our final output.
 #' @param joiner_regex a regex that tells us how to split the locations
 #'
-#' @return same data frame with the location_word column added
+#' @return same data frame with the location_word column added as well as a column called uncertain_location_specificity where the same location could be referred to in varying levels of specificity
 #' @export
 #'
 #' @examples
@@ -23,10 +23,11 @@ split_locations <- function(.,
                               "near", "department"),
                             joiner_regex = ",|\\(|\\)|;|\\+|( and )|( of )"
 ) {
-  location_word <- NULL
+  location_string <- location_word <- NULL
   df <- .
   dummy_words_regex <- stringr::str_c("(",stringr::str_c(dummy_words,collapse=")|("),")")
   new_df <- df %>%
+    #dplyr::mutate(uncertain_location_specificity = stringr::str_detect(string = location_string, "\\(")) %>%
     tidytext::unnest_tokens(output = "location_word",
                   input = column_name,
                   token = stringr::str_split,
@@ -38,5 +39,8 @@ split_locations <- function(.,
     dplyr::filter(!stringr::str_detect(location_word, "^[0-9 ]+$")) %>%
     dplyr::filter(!stringr::str_detect(location_word, "^ +$")) %>%
     dplyr::filter(location_word!="")
+  vec <- new_df[[column_name]]
+  new_df <- new_df %>%
+    dplyr::mutate(uncertain_location_specificity = stringr::str_detect(string = vec, "\\("))
   return(new_df)
 }

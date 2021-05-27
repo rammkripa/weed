@@ -23,7 +23,7 @@ split_locations(
 \item{joiner_regex}{a regex that tells us how to split the locations}
 }
 \value{
-same data frame with the location_word column added
+same data frame with the location_word column added as well as a column called uncertain_location_specificity where the same location could be referred to in varying levels of specificity
 }
 \description{
 Changes the unit of analysis from a disaster, to a disaster-location. This is useful as preprocessing before geocoding each disaster-location pair.

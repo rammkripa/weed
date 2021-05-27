@@ -69,7 +69,7 @@ locationized_data <- em$disaster_data %>%
   split_locations(column_name = "Location") %>%
   head()
 locationized_data %>%
-  select(`Dis No`, Location,location_word, Latitude, Longitude)
+  select(`Dis No`, Location,location_word, Latitude, Longitude, uncertain_location_specificity)
 ```
 
 There are two problems with the Dataset as it exists here.
