@@ -47,7 +47,8 @@ percent_located_locations <- function(.,
       ggplot2::ylab("Percent of Locations") +
       ggplot2::ggtitle("Percent of Locations Geocoded") +
       ggplot2::coord_flip()+
-      ggplot2::theme(legend.title = ggplot2::element_blank())
+      ggplot2::theme(legend.title = ggplot2::element_blank()) +
+      ggplot2::scale_color_manual(aesthetics = 'fill', values = c('Geocode Failed' = 'red', 'Geocode Success' = 'blue'))
   }
   else {
     return(perc_df)
