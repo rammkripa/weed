@@ -6,8 +6,8 @@
 \usage{
 geocode_batches(
   .,
-  batch_size,
-  wait_time,
+  batch_size = 990,
+  wait_time = 4800,
   n_results = 1,
   unwrap = FALSE,
   geonames_username
@@ -18,7 +18,9 @@ geocode_batches(
 
 \item{batch_size}{size of each batch to geocode}
 
-\item{wait_time}{in seconds between batches}
+\item{wait_time}{in seconds between batches
+Note:
+default batch_size and wait_time were set to accomplish the geocoding task optimally within the constraints of geonames free access}
 
 \item{n_results}{same as geocode}
 
@@ -27,11 +29,20 @@ geocode_batches(
 \item{geonames_username}{as in geocode}
 }
 \value{
-df but geocoded in batches
+df geocoded
 }
 \description{
 Geocode in batches
 }
 \examples{
-Coming soon
+df <- tibble::tribble(
+   ~value,  ~location_word,                    ~Country,
+   "city of new york",      "new york",                       "USA",
+   "mumbai region, district of seattle, sichuan province",  "mumbai","India",
+   "mumbai region, district of seattle, sichuan province",  "seattle", "USA",
+   "mumbai region, district of seattle, sichuan province", "sichuan",  "China, People's Republic"
+   )
+
+geocode_batches(df, batch_size = 1, wait_time = 4, geonames_username = "rammkripa")
+
 }
