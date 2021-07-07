@@ -43,6 +43,6 @@ df <- tibble::tribble(
    "mumbai region, district of seattle, sichuan province", "sichuan",  "China, People's Republic"
    )
 
-geocode_batches(df, batch_size = 1, wait_time = 4, geonames_username = "rammkripa")
+geocode_batches(df, batch_size = 3, wait_time = 0.4, geonames_username = "rammkripa")
 
 }

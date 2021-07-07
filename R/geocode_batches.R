@@ -22,7 +22,7 @@
 #'    "mumbai region, district of seattle, sichuan province", "sichuan",  "China, People's Republic"
 #'    )
 #'
-#' geocode_batches(df, batch_size = 1, wait_time = 4, geonames_username = "rammkripa")
+#' geocode_batches(df, batch_size = 3, wait_time = 0.4, geonames_username = "rammkripa")
 #'
 #' @importFrom magrittr %>%
 geocode_batches <- function(.,
@@ -32,17 +32,19 @@ geocode_batches <- function(.,
                             unwrap = FALSE,
                             geonames_username) {
   df <- .
-  num_batches <- nrow(df) %/% batch_size
+  num_batches <- ((nrow(df) - 1) %/% batch_size) + 1
   listy <- list()
-  for (batch_num in 1:num_batches) {
+  for (batch_num in 0:(num_batches-1)) {
     print("batch number")
-    print(batch_num)
+    print(batch_num + 1)
     start.idx <- batch_num * batch_size
-    end.idx <- min( c((batch_num + 1) * batch_size - 1, nrow(df)) )
+    end.idx <- min(c((batch_num + 1) * batch_size, nrow(df)) ) - 1
+    start.idx <- start.idx + 1
+    end.idx <- end.idx + 1
     df_slice <- dplyr::slice(df, start.idx:end.idx)
     coded_slice <- df_slice %>%
       geocode(n_results, unwrap, geonames_username)
-    listy[[batch_num]] = coded_slice
+    listy[[batch_num + 1]] = coded_slice
     print("waiting for ")
     print(wait_time)
     print("seconds")
