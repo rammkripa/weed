@@ -18,10 +18,8 @@
 #' @examples
 #' df <- tibble::tribble(
 #'    ~value,  ~location_word,                    ~Country,
-#'    "city of new york",      "new york",                       "USA",
 #'    "mumbai region, district of seattle, sichuan province",  "mumbai","India",
-#'    "mumbai region, district of seattle, sichuan province",  "seattle", "USA",
-#'    "mumbai region, district of seattle, sichuan province", "sichuan",  "China, People's Republic"
+#'    "mumbai region, district of seattle, sichuan province",  "seattle", "USA"
 #'    )
 #' geocode(df, n_results = 1, unwrap = TRUE, geonames_username = "rammkripa")
 #'

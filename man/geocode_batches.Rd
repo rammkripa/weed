@@ -37,12 +37,11 @@ Geocode in batches
 \examples{
 df <- tibble::tribble(
    ~value,  ~location_word,                    ~Country,
-   "city of new york",      "new york",                       "USA",
    "mumbai region, district of seattle, sichuan province",  "mumbai","India",
    "mumbai region, district of seattle, sichuan province",  "seattle", "USA",
    "mumbai region, district of seattle, sichuan province", "sichuan",  "China, People's Republic"
    )
 
-geocode_batches(df, batch_size = 3, wait_time = 0.4, geonames_username = "rammkripa")
+geocode_batches(df, batch_size = 2, wait_time = 0.4, geonames_username = "rammkripa")
 
 }
