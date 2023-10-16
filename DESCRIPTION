@@ -1,6 +1,6 @@
 Package: weed
 Title: Wrangler for Emergency Events Database
-Version: 1.1.1
+Version: 1.1.2
 Authors@R: 
     person(given = "Ram",
            family = "Kripa",
@@ -25,7 +25,6 @@ Imports:
     tidyr,
     forcats,
     ggplot2,
-    rgeos,
     sf,
     here
 URL: https://github.com/rammkripa/weed
