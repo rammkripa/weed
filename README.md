@@ -5,6 +5,7 @@
 
 <!-- badges: start -->
 [![](https://cranlogs.r-pkg.org/badges/weed)](https://cran.r-project.org/package=weed)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/weed)](https://cran.r-project.org/package=weed)
 <!-- badges: end -->
 
 The goal of weed is to make the analysis of EM-DAT and related datasets
